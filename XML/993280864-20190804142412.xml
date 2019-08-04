@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<NotaFiscal xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Id>0</Id>
+  <NumeroNotaFiscal>99999</NumeroNotaFiscal>
+  <Serie>993280864</Serie>
+  <NomeCliente>Test</NomeCliente>
+  <EstadoDestino>MS</EstadoDestino>
+  <EstadoOrigem>AP</EstadoOrigem>
+  <ItensDaNotaFiscal>
+    <NotaFiscalItem>
+      <Id>0</Id>
+      <IdNotaFiscal>0</IdNotaFiscal>
+      <TipoIcms>60</TipoIcms>
+      <BaseIcms>12</BaseIcms>
+      <AliquotaIcms>0.18</AliquotaIcms>
+      <ValorIcms>2.16</ValorIcms>
+      <NomeProduto>Test</NomeProduto>
+      <CodigoProduto>test</CodigoProduto>
+    </NotaFiscalItem>
+  </ItensDaNotaFiscal>
+</NotaFiscal>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<NotaFiscal xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Id>0</Id>
+  <NumeroNotaFiscal>99999</NumeroNotaFiscal>
+  <Serie>1264944842</Serie>
+  <NomeCliente>Pedro Thiago Lozano</NomeCliente>
+  <EstadoDestino>SP</EstadoDestino>
+  <EstadoOrigem>SP</EstadoOrigem>
+  <ItensDaNotaFiscal>
+    <NotaFiscalItem>
+      <Id>0</Id>
+      <IdNotaFiscal>0</IdNotaFiscal>
+      <Cfop />
+      <TipoIcms>60</TipoIcms>
+      <BaseIcms>100</BaseIcms>
+      <AliquotaIcms>0.18</AliquotaIcms>
+      <ValorIcms>18</ValorIcms>
+      <NomeProduto>Prod 1</NomeProduto>
+      <CodigoProduto>Cod 1</CodigoProduto>
+    </NotaFiscalItem>
+    <NotaFiscalItem>
+      <Id>0</Id>
+      <IdNotaFiscal>0</IdNotaFiscal>
+      <Cfop />
+      <TipoIcms>60</TipoIcms>
+      <BaseIcms>150</BaseIcms>
+      <AliquotaIcms>0.18</AliquotaIcms>
+      <ValorIcms>27</ValorIcms>
+      <NomeProduto>Prod 2</NomeProduto>
+      <CodigoProduto>Cod 2</CodigoProduto>
+    </NotaFiscalItem>
+    <NotaFiscalItem>
+      <Id>0</Id>
+      <IdNotaFiscal>0</IdNotaFiscal>
+      <Cfop />
+      <TipoIcms>60</TipoIcms>
+      <BaseIcms>499.99</BaseIcms>
+      <AliquotaIcms>0.18</AliquotaIcms>
+      <ValorIcms>89.9982</ValorIcms>
+      <NomeProduto>Prod 3</NomeProduto>
+      <CodigoProduto>Cod 3</CodigoProduto>
+    </NotaFiscalItem>
+  </ItensDaNotaFiscal>
+</NotaFiscal>
