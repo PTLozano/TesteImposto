@@ -20,7 +20,7 @@ namespace Imposto.Core.Business.Impostos.IPI
 
         public double ValorIPI() => this.CalculaBaseIPI() * this.VerificaAliquotaIPI();
 
-        public double CalculaBaseIPI()=> _itemPedido.ValorItemPedido;
+        public double CalculaBaseIPI() => _itemPedido.ValorItemPedido;
 
         public double VerificaAliquotaIPI()
         {

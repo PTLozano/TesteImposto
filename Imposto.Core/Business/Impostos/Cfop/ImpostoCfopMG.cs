@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using Imposto.Core.Domain;
+﻿using Imposto.Core.Domain;
 using Imposto.Core.Interface;
+using System.Collections.Generic;
 
 namespace Imposto.Core.Business.Impostos.Cfop
 {

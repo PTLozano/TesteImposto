@@ -1,18 +1,15 @@
-﻿using Imposto.Core.Service;
+﻿using Imposto.Core.Data;
+using Imposto.Core.Domain;
+using Imposto.Core.Service;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Imposto.Core.Domain;
-using TesteImposto.Service;
-using TesteImposto.Interface;
 using TesteImposto.Business;
-using System.Threading;
+using TesteImposto.Interface;
 
 namespace TesteImposto
 {
@@ -65,7 +62,7 @@ namespace TesteImposto
         private List<string> GetComboEstados()
         {
             List<string> opcoesEstados = new List<string>() { " " };
-            opcoesEstados.AddRange(Estados.Lista);
+            opcoesEstados.AddRange(ManipulaEstados.Lista);
 
             return opcoesEstados;
         }

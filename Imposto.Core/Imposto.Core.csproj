@@ -65,6 +65,7 @@
     <Compile Include="Data\AcessoBancoDados.cs" />
     <Compile Include="Data\DAONotaFiscal.cs" />
     <Compile Include="Data\DAONotaFiscalItem.cs" />
+    <Compile Include="Data\ManipulaEstados.cs" />
     <Compile Include="Interface\IBancoDados.cs" />
     <Compile Include="Data\NotaFiscalRepository.cs" />
     <Compile Include="Domain\NotaFiscal.cs" />

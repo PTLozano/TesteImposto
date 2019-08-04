@@ -2,9 +2,7 @@
 using Imposto.Core.Interface;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
 
 namespace Imposto.Core.Data
 {
@@ -28,7 +26,8 @@ namespace Imposto.Core.Data
                 new SqlParameter("@pCodigoProduto", registro.CodigoProduto),
                 new SqlParameter("@pBaseIpi", registro.BaseIpi),
                 new SqlParameter("@pAliquotaIpi", registro.AliquotaIpi),
-                new SqlParameter("@pValorIpi", registro.ValorIpi)
+                new SqlParameter("@pValorIpi", registro.ValorIpi),
+                new SqlParameter("@pDesconto", registro.Desconto)
             };
 
             base.Executar("P_NOTA_FISCAL_ITEM", parametros);
@@ -51,7 +50,8 @@ namespace Imposto.Core.Data
                 new SqlParameter("@pCodigoProduto", registro.CodigoProduto),
                 new SqlParameter("@pBaseIpi", registro.BaseIpi),
                 new SqlParameter("@pAliquotaIpi", registro.AliquotaIpi),
-                new SqlParameter("@pValorIpi", registro.ValorIpi)
+                new SqlParameter("@pValorIpi", registro.ValorIpi),
+                new SqlParameter("@pDesconto", registro.Desconto)
             };
 
             base.Executar("P_NOTA_FISCAL_ITEM", parametros);

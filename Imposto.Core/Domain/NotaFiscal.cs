@@ -5,7 +5,6 @@ using Imposto.Core.Data;
 using System;
 using System.Collections.Generic;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace Imposto.Core.Domain
 {
@@ -48,6 +47,9 @@ namespace Imposto.Core.Domain
             ImpostoCfop impostoCfop = new ImpostoCfop();
             string valorImpostoCfop = impostoCfop.CalculaImpostoCfop(pedido);
 
+            ManipulaEstados manipulaEstados = new ManipulaEstados();
+            double desconto = manipulaEstados.DescontoParaEstadosDestino(pedido.EstadoDestino);
+
             foreach (PedidoItem itemPedido in pedido.ItensDoPedido)
             {
                 ImpostoICMS impostoICMS = new ImpostoICMS(pedido, itemPedido, valorImpostoCfop);
@@ -64,7 +66,8 @@ namespace Imposto.Core.Domain
                     ValorIcms = impostoICMS.ValorICMS(),
                     BaseIpi = impostoIPI.CalculaBaseIPI(),
                     AliquotaIpi = impostoIPI.VerificaAliquotaIPI(),
-                    ValorIpi = impostoIPI.ValorIPI()
+                    ValorIpi = impostoIPI.ValorIPI(),
+                    Desconto = desconto
                 });
             }
         }

@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-
-namespace Imposto.Core.Interface
+﻿namespace Imposto.Core.Interface
 {
     public interface IExporta<T>
     {

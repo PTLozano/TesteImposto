@@ -21,7 +21,7 @@ namespace Imposto.Core.Business.Impostos.Cfop
             if (_strategies.ContainsKey(pedido.EstadoOrigem))
                 return _strategies[pedido.EstadoOrigem].CalculaImposto(pedido);
 
-            return null;
+            return string.Empty;
         }
     }
 }

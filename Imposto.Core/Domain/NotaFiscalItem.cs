@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Imposto.Core.Domain
+﻿namespace Imposto.Core.Domain
 {
     public class NotaFiscalItem
     {
@@ -20,5 +14,6 @@ namespace Imposto.Core.Domain
         public double BaseIpi { get; set; }
         public double AliquotaIpi { get; set; }
         public double ValorIpi { get; set; }
+        public double Desconto { get; set; }
     }
 }
