@@ -9,13 +9,18 @@ namespace Imposto.Core.Data
     {
         private string StringDeConexao { get => ConfigurationManager.ConnectionStrings["BancoDeDados"].ConnectionString; }
 
-        internal void Executar(string NomeProcedure, List<SqlParameter> parametros)
+        /// <summary>
+        /// Executa uma procedure no BD
+        /// </summary>
+        /// <param name="nomeProcedure">Nome da procedure que será executada</param>
+        /// <param name="parametros">Parâmetros da procedure</param>
+        internal void Executar(string nomeProcedure, List<SqlParameter> parametros)
         {
             SqlCommand comando = new SqlCommand();
             SqlConnection conexao = new SqlConnection(StringDeConexao);
             comando.Connection = conexao;
             comando.CommandType = CommandType.StoredProcedure;
-            comando.CommandText = NomeProcedure;
+            comando.CommandText = nomeProcedure;
             foreach (var item in parametros)
                 comando.Parameters.Add(item);
 
@@ -30,14 +35,20 @@ namespace Imposto.Core.Data
             }
         }
 
-        internal DataSet Consultar(string NomeProcedure, List<SqlParameter> parametros)
+        /// <summary>
+        /// Consulta no BD a procedure informada
+        /// </summary>
+        /// <param name="nomeProcedure">Nome da procedure que será executada</param>
+        /// <param name="parametros">Parâmetros da procedure</param>
+        /// <returns>Retorna um DataSet com o valor retornado</returns>
+        internal DataSet Consultar(string nomeProcedure, List<SqlParameter> parametros)
         {
             SqlCommand comando = new SqlCommand();
             SqlConnection conexao = new SqlConnection(StringDeConexao);
 
             comando.Connection = conexao;
             comando.CommandType = CommandType.StoredProcedure;
-            comando.CommandText = NomeProcedure;
+            comando.CommandText = nomeProcedure;
             foreach (var item in parametros)
                 comando.Parameters.Add(item);
 

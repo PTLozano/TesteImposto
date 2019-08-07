@@ -11,6 +11,7 @@
     <AssemblyName>Imposto.Core</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -23,7 +24,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -57,15 +57,17 @@
   <ItemGroup>
     <Compile Include="Business\BO\BoNotaFiscalItem.cs" />
     <Compile Include="Business\BO\BoNotaFiscal.cs" />
-    <Compile Include="Business\Impostos\Cfop\ImpostoCfop.cs" />
-    <Compile Include="Business\Impostos\Cfop\ImpostoCfopMG.cs" />
-    <Compile Include="Business\Impostos\Cfop\ImpostoCfopSP.cs" />
+    <Compile Include="Business\Cfop\Cfop.cs" />
+    <Compile Include="Business\Cfop\CfopMG.cs" />
+    <Compile Include="Business\Cfop\CfopSP.cs" />
     <Compile Include="Business\Impostos\ICMS\ImpostoICMS.cs" />
+    <Compile Include="Business\Impostos\Impostos.cs" />
     <Compile Include="Business\Impostos\IPI\ImpostoIPI.cs" />
     <Compile Include="Data\AcessoBancoDados.cs" />
     <Compile Include="Data\DAONotaFiscal.cs" />
     <Compile Include="Data\DAONotaFiscalItem.cs" />
     <Compile Include="Data\ManipulaEstados.cs" />
+    <Compile Include="Helpers\NotaFiscalHelper.cs" />
     <Compile Include="Interface\IBancoDados.cs" />
     <Compile Include="Data\NotaFiscalRepository.cs" />
     <Compile Include="Domain\NotaFiscal.cs" />
@@ -73,21 +75,12 @@
     <Compile Include="Domain\Pedido.cs" />
     <Compile Include="Domain\PedidoItem.cs" />
     <Compile Include="Interface\IExporta.cs" />
-    <Compile Include="Interface\IImpostoCfop.cs" />
+    <Compile Include="Interface\ICfop.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\ExportaNotaFiscalBD.cs" />
     <Compile Include="Service\ExportaNotaFiscalXML.cs" />
     <Compile Include="Service\ExportaXMLService.cs" />
     <Compile Include="Service\NotaFiscalService.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_Data\Teste.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="App_Data\Teste_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>Teste.mdf</DependentUpon>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
@@ -96,7 +89,21 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Imposto.Data\Imposto.Data.csproj">
+      <Project>{1e2f481c-dddb-467f-b81d-dd045f0f2b3d}</Project>
+      <Name>Imposto.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\Teste.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Data\Teste_log.ldf">
+      <DependentUpon>Teste.mdf</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

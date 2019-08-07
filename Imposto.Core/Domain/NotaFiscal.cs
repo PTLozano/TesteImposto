@@ -1,7 +1,5 @@
-﻿using Imposto.Core.Business.Impostos.Cfop;
-using Imposto.Core.Business.Impostos.ICMS;
-using Imposto.Core.Business.Impostos.IPI;
-using Imposto.Core.Data;
+﻿using Imposto.Core.Data;
+using Imposto.Core.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -14,7 +12,6 @@ namespace Imposto.Core.Domain
         public int NumeroNotaFiscal { get; set; }
         public int Serie { get; set; }
         public string NomeCliente { get; set; }
-
         public string EstadoDestino { get; set; }
         public string EstadoOrigem { get; set; }
 
@@ -29,47 +26,22 @@ namespace Imposto.Core.Domain
 
         public void EmitirNotaFiscal(Pedido pedido)
         {
-            this.NumeroNotaFiscal = 99999;
-            this.Serie = new Random().Next(Int32.MaxValue);
-            this.NomeCliente = pedido.NomeCliente;
-
-            this.EstadoDestino = pedido.EstadoDestino;
-            this.EstadoOrigem = pedido.EstadoOrigem;
-
-            PopulaItensNotaFiscal(pedido);
+            PopulaNotaFiscal(pedido);
 
             NotaFiscalRepository notaFiscalRepository = new NotaFiscalRepository();
             notaFiscalRepository.Salvar(this);
         }
 
-        private void PopulaItensNotaFiscal(Pedido pedido)
+        private void PopulaNotaFiscal(Pedido pedido)
         {
-            ImpostoCfop impostoCfop = new ImpostoCfop();
-            string valorImpostoCfop = impostoCfop.CalculaImpostoCfop(pedido);
+            this.NumeroNotaFiscal = 99999;
+            this.Serie = new Random().Next(Int32.MaxValue);
+            this.NomeCliente = pedido.NomeCliente;
+            this.EstadoDestino = pedido.EstadoDestino;
+            this.EstadoOrigem = pedido.EstadoOrigem;
 
-            ManipulaEstados manipulaEstados = new ManipulaEstados();
-            double desconto = manipulaEstados.DescontoParaEstadosDestino(pedido.EstadoDestino);
-
-            foreach (PedidoItem itemPedido in pedido.ItensDoPedido)
-            {
-                ImpostoICMS impostoICMS = new ImpostoICMS(pedido, itemPedido, valorImpostoCfop);
-                ImpostoIPI impostoIPI = new ImpostoIPI(itemPedido);
-
-                this.ItensDaNotaFiscal.Add(new NotaFiscalItem
-                {
-                    NomeProduto = itemPedido.NomeProduto,
-                    CodigoProduto = itemPedido.CodigoProduto,
-                    Cfop = valorImpostoCfop,
-                    BaseIcms = impostoICMS.CalculaBaseICMS(),
-                    TipoIcms = impostoICMS.VerificaTipoICMS(),
-                    AliquotaIcms = impostoICMS.VerificaAliquotaICMS(),
-                    ValorIcms = impostoICMS.ValorICMS(),
-                    BaseIpi = impostoIPI.CalculaBaseIPI(),
-                    AliquotaIpi = impostoIPI.VerificaAliquotaIPI(),
-                    ValorIpi = impostoIPI.ValorIPI(),
-                    Desconto = desconto
-                });
-            }
+            NotaFiscalHelper notaFiscalHelper = new NotaFiscalHelper();
+            this.ItensDaNotaFiscal = notaFiscalHelper.PopulaItensNotaFiscal(pedido);
         }
     }
 }

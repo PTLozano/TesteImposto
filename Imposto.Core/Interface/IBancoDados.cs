@@ -4,7 +4,6 @@ namespace Imposto.Core.Interface
 {
     interface IBancoDados<T>
     {
-
         /// <summary>
         /// Inclui um novo registro
         /// </summary>

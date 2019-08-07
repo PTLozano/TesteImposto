@@ -167,7 +167,9 @@ namespace TesteImposto
             if (!double.TryParse(e.FormattedValue.ToString(), out double newInteger) || newInteger < 0)
             {
                 e.Cancel = true;
-                dataGridViewPedidos.Rows[e.RowIndex].ErrorText = "A coluna Valor somente pode conter números e o caracter vírgula";
+                string mensagem = "A coluna Valor somente pode conter números e o caracter vírgula";
+                MessageBox.Show(mensagem, "Valor inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dataGridViewPedidos.Rows[e.RowIndex].ErrorText = mensagem;
             }
         }
     }

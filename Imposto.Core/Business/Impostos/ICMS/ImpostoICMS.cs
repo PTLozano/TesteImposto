@@ -5,7 +5,7 @@ namespace Imposto.Core.Business.Impostos.ICMS
     /// <summary>
     /// Manipula os calculos e tipo relacionado ao ICMS
     /// </summary>
-    class ImpostoICMS
+    class ImpostoICMS : Impostos
     {
         private Pedido _pedido;
         private PedidoItem _itemPedido;
@@ -24,12 +24,9 @@ namespace Imposto.Core.Business.Impostos.ICMS
             _cfop = cfop;
         }
 
-        public double ValorICMS() => this.CalculaBaseICMS() * this.VerificaAliquotaICMS();
-
-        public double CalculaBaseICMS()
+        public override double CalculaBase()
         {
-            double valor = 0;
-
+            double valor;
             if (!string.IsNullOrWhiteSpace(_cfop) && _cfop == "6.009")
             {
                 valor = _itemPedido.ValorItemPedido * 0.90; //redução de base
@@ -42,10 +39,9 @@ namespace Imposto.Core.Business.Impostos.ICMS
             return valor;
         }
 
-        public double VerificaAliquotaICMS()
+        public override double VerificaAliquota()
         {
-            double aliquota = 0;
-
+            double aliquota;
             if (_itemPedido.Brinde || _pedido.EstadoOrigem == _pedido.EstadoDestino)
             {
                 aliquota = 0.18;
@@ -58,10 +54,9 @@ namespace Imposto.Core.Business.Impostos.ICMS
             return aliquota;
         }
 
-        public string VerificaTipoICMS()
+        public string VerificaTipo()
         {
-            string tipo = string.Empty;
-
+            string tipo;
             if (_itemPedido.Brinde || _pedido.EstadoOrigem == _pedido.EstadoDestino)
             {
                 tipo = "60";

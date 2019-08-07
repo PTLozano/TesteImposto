@@ -20,7 +20,8 @@ namespace Imposto.Core.Service
 
                 caminhoXML = Path.Combine(caminhoXML, $"{nomeArquivo}.xml");
 
-                ExportaXMLService.GeraXML(notaFiscal, caminhoXML);
+                ExportaXMLService exportaXML = new ExportaXMLService();
+                exportaXML.GeraXML(notaFiscal, caminhoXML);
 
 
                 if (ProximaExportacao != null)

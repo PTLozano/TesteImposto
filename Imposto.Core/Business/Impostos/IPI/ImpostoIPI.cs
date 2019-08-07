@@ -5,7 +5,7 @@ namespace Imposto.Core.Business.Impostos.IPI
     /// <summary>
     /// Manipula os calculos e tipo relacionado ao IPI
     /// </summary>
-    class ImpostoIPI
+    class ImpostoIPI : Impostos
     {
         private PedidoItem _itemPedido;
 
@@ -18,11 +18,9 @@ namespace Imposto.Core.Business.Impostos.IPI
             _itemPedido = itemPedido;
         }
 
-        public double ValorIPI() => this.CalculaBaseIPI() * this.VerificaAliquotaIPI();
+        public override double CalculaBase() => _itemPedido.ValorItemPedido;
 
-        public double CalculaBaseIPI() => _itemPedido.ValorItemPedido;
-
-        public double VerificaAliquotaIPI()
+        public override double VerificaAliquota()
         {
             double aliquota = 0;
 
