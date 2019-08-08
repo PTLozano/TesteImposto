@@ -16,7 +16,7 @@ namespace Imposto.Core.Business.Impostos.ICMS
         /// </summary>
         /// <param name="pedido">Pedido que contém todos os itens</param>
         /// <param name="itemPedido">Item que deseja calcular o ICMS</param>
-        /// <param name="cfop">Cfop do pedido</param>
+        /// <param name="cfop">CFOP do pedido</param>
         public ImpostoICMS(Pedido pedido, PedidoItem itemPedido, string cfop)
         {
             _pedido = pedido;
@@ -29,7 +29,7 @@ namespace Imposto.Core.Business.Impostos.ICMS
             double valor;
             if (!string.IsNullOrWhiteSpace(_cfop) && _cfop == "6.009")
             {
-                valor = _itemPedido.ValorItemPedido * 0.90; //redução de base
+                valor = _itemPedido.ValorItemPedido * 0.90;
             }
             else
             {
@@ -44,11 +44,11 @@ namespace Imposto.Core.Business.Impostos.ICMS
             double aliquota;
             if (_itemPedido.Brinde || _pedido.EstadoOrigem == _pedido.EstadoDestino)
             {
-                aliquota = 0.18;
+                aliquota = 0.18d;
             }
             else
             {
-                aliquota = 0.17;
+                aliquota = 0.17d;
             }
 
             return aliquota;

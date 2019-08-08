@@ -26,7 +26,7 @@ namespace Imposto.Core.Business.Impostos.IPI
 
             if (!_itemPedido.Brinde)
             {
-                aliquota = 0.1;
+                aliquota = 0.1d;
             }
 
             return aliquota;

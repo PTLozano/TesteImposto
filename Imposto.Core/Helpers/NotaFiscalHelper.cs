@@ -13,7 +13,7 @@ namespace Imposto.Core.Helpers
     /// <summary>
     /// Auxilia na emissão da Nota Fiscal
     /// </summary>
-    class NotaFiscalHelper
+    public class NotaFiscalHelper
     {
         /// <summary>
         /// Cria uma nota fiscal a partir do pedido
