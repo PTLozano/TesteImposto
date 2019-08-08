@@ -84,6 +84,10 @@
       <Project>{2339c0b3-1e95-4cd3-bfba-64b377857016}</Project>
       <Name>Imposto.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Imposto.Domain\Imposto.Domain.csproj">
+      <Project>{548DF817-B0F1-4C3E-A178-7A2538C4FF9C}</Project>
+      <Name>Imposto.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,4 +1,5 @@
-﻿using Imposto.Core.Interface;
+﻿using Imposto.Domain.Domain;
+using Imposto.Domain.Interface;
 using System.Collections.Generic;
 
 namespace Imposto.Core.Business.Cfop
@@ -15,11 +16,11 @@ namespace Imposto.Core.Business.Cfop
             _strategies = new Dictionary<string, ICfop>()
             {
                 { "SP", new CfopSP() },
-                { "MG", new CfopSP() }
+                { "MG", new CfopMG() }
             };
         }
 
-        public string VerificaCFOP(Domain.Pedido pedido)
+        public string VerificaCFOP(Pedido pedido)
         {
             if (_strategies.ContainsKey(pedido.EstadoOrigem))
                 return _strategies[pedido.EstadoOrigem].Verifica(pedido);

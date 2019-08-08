@@ -1,6 +1,6 @@
-﻿using Imposto.Core.Data;
-using Imposto.Core.Domain;
-using Imposto.Core.Service;
+﻿using Imposto.Core.Service;
+using Imposto.Data;
+using Imposto.Domain.Domain;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -39,13 +39,10 @@ namespace TesteImposto
 
         private void ResizeColumns()
         {
-            double mediaWidth = dataGridViewPedidos.Width / dataGridViewPedidos.Columns.GetColumnCount(DataGridViewElementStates.Visible);
-
-            for (int i = dataGridViewPedidos.Columns.Count - 1; i >= 0; i--)
-            {
-                var coluna = dataGridViewPedidos.Columns[i];
-                coluna.Width = Convert.ToInt32(mediaWidth);
-            }
+            dataGridViewPedidos.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewPedidos.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewPedidos.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewPedidos.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
         }
 
         private object GetTablePedidos()
@@ -164,10 +161,14 @@ namespace TesteImposto
 
             if (dataGridViewPedidos.Rows[e.RowIndex].IsNewRow || e.ColumnIndex != 2) { return; }
 
-            if (!double.TryParse(e.FormattedValue.ToString(), out double newInteger) || newInteger < 0)
+            string valor = e.FormattedValue.ToString();
+
+            if (string.IsNullOrWhiteSpace(valor)) return;
+
+            if (!double.TryParse(valor, out double newInteger) || newInteger < 0)
             {
                 e.Cancel = true;
-                string mensagem = "A coluna Valor somente pode conter números e o caracter vírgula";
+                string mensagem = "A coluna Valor somente pode conter números, o caracter vírgula e não pode ser negativo.";
                 MessageBox.Show(mensagem, "Valor inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 dataGridViewPedidos.Rows[e.RowIndex].ErrorText = mensagem;
             }

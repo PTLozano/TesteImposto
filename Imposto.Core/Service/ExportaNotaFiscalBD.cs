@@ -1,6 +1,6 @@
 ﻿using Imposto.Core.Business.BO;
-using Imposto.Core.Domain;
-using Imposto.Core.Interface;
+using Imposto.Domain.Domain;
+using Imposto.Domain.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +15,7 @@ namespace Imposto.Core.Service
         {
             try
             {
-                AtualizaNotaFiscal(notaFiscal);
+                ExportaNotaFiscal(notaFiscal);
 
                 if (ProximaExportacao != null)
                     ProximaExportacao.Exporta(notaFiscal);
@@ -26,7 +26,7 @@ namespace Imposto.Core.Service
             }
         }
 
-        private void AtualizaNotaFiscal(NotaFiscal notaFiscal)
+        private void ExportaNotaFiscal(NotaFiscal notaFiscal)
         {
             BoNotaFiscal boNotaFiscal = new BoNotaFiscal();
 
@@ -38,10 +38,10 @@ namespace Imposto.Core.Service
                 return _;
             });
 
-            AtualizaNotaFiscalItem(notaFiscalItemLista);
+            ExportaNotaFiscalItem(notaFiscalItemLista);
         }
 
-        private void AtualizaNotaFiscalItem(IEnumerable<NotaFiscalItem> notaFiscalItemLista)
+        private void ExportaNotaFiscalItem(IEnumerable<NotaFiscalItem> notaFiscalItemLista)
         {
             BoNotaFiscalItem boNotaFiscalItem = new BoNotaFiscalItem();
             foreach (NotaFiscalItem item in notaFiscalItemLista)

@@ -1,5 +1,4 @@
-﻿using Imposto.Domain;
-using Imposto.Domain.Domain;
+﻿using Imposto.Domain.Domain;
 using Imposto.Domain.Interface;
 using System;
 using System.Collections.Generic;
@@ -12,7 +11,7 @@ namespace Imposto.Data
     /// <summary>
     /// Classe de acesso a dados de Nota Fiscal
     /// </summary>
-    internal class DAONotaFiscal : AcessoBancoDados, IBancoDados<NotaFiscal>
+    public class DAONotaFiscal : AcessoBancoDados, IBancoDados<NotaFiscal>
     {
         public int Incluir(NotaFiscal registro)
         {

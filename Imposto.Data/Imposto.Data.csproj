@@ -60,7 +60,6 @@
     <Compile Include="Data\AcessoBancoDados.cs" />
     <Compile Include="Data\DAONotaFiscal.cs" />
     <Compile Include="Data\DAONotaFiscalItem.cs" />
-    <Compile Include="Data\ManipulaEstados.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -63,23 +63,13 @@
     <Compile Include="Business\Impostos\ICMS\ImpostoICMS.cs" />
     <Compile Include="Business\Impostos\Impostos.cs" />
     <Compile Include="Business\Impostos\IPI\ImpostoIPI.cs" />
-    <Compile Include="Data\AcessoBancoDados.cs" />
-    <Compile Include="Data\DAONotaFiscal.cs" />
-    <Compile Include="Data\DAONotaFiscalItem.cs" />
-    <Compile Include="Data\ManipulaEstados.cs" />
+    <Compile Include="Business\Repository\NotaFiscalRepository.cs" />
     <Compile Include="Helpers\NotaFiscalHelper.cs" />
-    <Compile Include="Interface\IBancoDados.cs" />
-    <Compile Include="Data\NotaFiscalRepository.cs" />
-    <Compile Include="Domain\NotaFiscal.cs" />
-    <Compile Include="Domain\NotaFiscalItem.cs" />
-    <Compile Include="Domain\Pedido.cs" />
-    <Compile Include="Domain\PedidoItem.cs" />
-    <Compile Include="Interface\IExporta.cs" />
-    <Compile Include="Interface\ICfop.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\ExportaNotaFiscalBD.cs" />
     <Compile Include="Service\ExportaNotaFiscalXML.cs" />
     <Compile Include="Service\ExportaXMLService.cs" />
+    <Compile Include="Service\ManipulaEstados.cs" />
     <Compile Include="Service\NotaFiscalService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -94,15 +84,10 @@
       <Project>{1e2f481c-dddb-467f-b81d-dd045f0f2b3d}</Project>
       <Name>Imposto.Data</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_Data\Teste.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="App_Data\Teste_log.ldf">
-      <DependentUpon>Teste.mdf</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <ProjectReference Include="..\Imposto.Domain\Imposto.Domain.csproj">
+      <Project>{548df817-b0f1-4c3e-a178-7a2538c4ff9c}</Project>
+      <Name>Imposto.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

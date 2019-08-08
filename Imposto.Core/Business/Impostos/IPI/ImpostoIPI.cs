@@ -1,11 +1,11 @@
-﻿using Imposto.Core.Domain;
+﻿using Imposto.Domain.Domain;
 
 namespace Imposto.Core.Business.Impostos.IPI
 {
     /// <summary>
     /// Manipula os calculos e tipo relacionado ao IPI
     /// </summary>
-    class ImpostoIPI : Impostos
+    public class ImpostoIPI : Impostos
     {
         private PedidoItem _itemPedido;
 

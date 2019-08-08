@@ -1,5 +1,5 @@
-﻿using Imposto.Core.Domain;
-using Imposto.Core.Interface;
+﻿using Imposto.Domain.Domain;
+using Imposto.Domain.Interface;
 using System;
 using System.Configuration;
 using System.IO;

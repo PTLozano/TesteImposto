@@ -1,6 +1,6 @@
-﻿using Imposto.Core.Data;
-using Imposto.Core.Domain;
-using Imposto.Core.Interface;
+﻿using Imposto.Data;
+using Imposto.Domain.Domain;
+using Imposto.Domain.Interface;
 using System;
 using System.Collections.Generic;
 

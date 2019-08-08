@@ -2,8 +2,8 @@
 using Imposto.Core.Business.Impostos;
 using Imposto.Core.Business.Impostos.ICMS;
 using Imposto.Core.Business.Impostos.IPI;
-using Imposto.Core.Data;
-using Imposto.Core.Domain;
+using Imposto.Data;
+using Imposto.Domain.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,20 +19,16 @@ namespace Imposto.Core.Helpers
         /// Cria uma nota fiscal a partir do pedido
         /// </summary>
         /// <param name="pedido">Pedido para a criação da nova nota fiscal</param>
-        /// <returns></returns>
-        public NotaFiscal PopulaNotaFiscal(Pedido pedido)
+        public NotaFiscal CriaNotaFiscal(Pedido pedido) => new NotaFiscal()
         {
-            NotaFiscalHelper notaFiscalHelper = new NotaFiscalHelper();
-            return new NotaFiscal()
-            {
-                NumeroNotaFiscal = 99999,
-                Serie = new Random().Next(int.MaxValue),
-                NomeCliente = pedido.NomeCliente,
-                EstadoDestino = pedido.EstadoDestino,
-                EstadoOrigem = pedido.EstadoOrigem,
-                ItensDaNotaFiscal = notaFiscalHelper.PopulaItensNotaFiscal(pedido)
-            };
-        }
+            NumeroNotaFiscal = 99999,
+            Serie = new Random().Next(int.MaxValue),
+            NomeCliente = pedido.NomeCliente,
+            EstadoDestino = pedido.EstadoDestino,
+            EstadoOrigem = pedido.EstadoOrigem,
+            ItensDaNotaFiscal = PopulaItensNotaFiscal(pedido)
+        };
+
 
         /// <summary>
         /// Aplica os impostos e verifica o CFOP do Pedido
@@ -67,14 +63,6 @@ namespace Imposto.Core.Helpers
                     Desconto = desconto
                 };
             }).ToList();
-        }
-
-        public void EmitirNotaFiscal(Pedido pedido)
-        {
-            PopulaNotaFiscal(pedido);
-
-            NotaFiscalRepository notaFiscalRepository = new NotaFiscalRepository();
-            notaFiscalRepository.Salvar(this);
         }
     }
 }

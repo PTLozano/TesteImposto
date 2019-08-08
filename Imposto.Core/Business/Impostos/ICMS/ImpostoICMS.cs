@@ -1,11 +1,11 @@
-﻿using Imposto.Core.Domain;
+﻿using Imposto.Domain.Domain;
 
 namespace Imposto.Core.Business.Impostos.ICMS
 {
     /// <summary>
     /// Manipula os calculos e tipo relacionado ao ICMS
     /// </summary>
-    class ImpostoICMS : Impostos
+    public class ImpostoICMS : Impostos
     {
         private Pedido _pedido;
         private PedidoItem _itemPedido;

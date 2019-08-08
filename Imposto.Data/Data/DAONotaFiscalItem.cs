@@ -9,7 +9,7 @@ namespace Imposto.Data
     /// <summary>
     /// Classe de acesso a dados de Nota Fiscal Item
     /// </summary>
-    internal class DAONotaFiscalItem : AcessoBancoDados, IBancoDados<NotaFiscalItem>
+    public class DAONotaFiscalItem : AcessoBancoDados, IBancoDados<NotaFiscalItem>
     {
         public int Incluir(NotaFiscalItem registro)
         {

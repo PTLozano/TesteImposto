@@ -1,4 +1,4 @@
-﻿using Imposto.Core.Data;
+﻿using Imposto.Core.Business.Repository;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
@@ -12,10 +12,10 @@ namespace Imposto.Test
         {
             try
             {
-                MockNotaFiscal mock = new MockNotaFiscal();
+                Mocks mock = new Mocks();
 
                 NotaFiscalRepository notaFiscalRepository = new NotaFiscalRepository();
-                notaFiscalRepository.SalvarXML(mock.GetNotaFiscal());
+                notaFiscalRepository.SalvarXML(mock.NotaFiscal());
             }
             catch (Exception)
             {
@@ -28,10 +28,10 @@ namespace Imposto.Test
         {
             try
             {
-                MockNotaFiscal mock = new MockNotaFiscal();
+                Mocks mock = new Mocks();
 
                 NotaFiscalRepository notaFiscalRepository = new NotaFiscalRepository();
-                notaFiscalRepository.SalvarBD(mock.GetNotaFiscal());
+                notaFiscalRepository.SalvarBD(mock.NotaFiscal());
             }
             catch (Exception)
             {
@@ -44,10 +44,10 @@ namespace Imposto.Test
         {
             try
             {
-                MockNotaFiscal mock = new MockNotaFiscal();
+                Mocks mock = new Mocks();
 
                 NotaFiscalRepository notaFiscalRepository = new NotaFiscalRepository();
-                notaFiscalRepository.Salvar(mock.GetNotaFiscal());
+                notaFiscalRepository.Salvar(mock.NotaFiscal());
             }
             catch (Exception)
             {

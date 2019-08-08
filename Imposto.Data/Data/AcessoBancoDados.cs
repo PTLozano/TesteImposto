@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 
 namespace Imposto.Data
 {
-    internal class AcessoBancoDados
+    public class AcessoBancoDados
     {
         private string StringDeConexao { get => ConfigurationManager.ConnectionStrings["BancoDeDados"].ConnectionString; }
 
@@ -16,11 +16,14 @@ namespace Imposto.Data
         /// <param name="parametros">Parâmetros da procedure</param>
         internal void Executar(string nomeProcedure, List<SqlParameter> parametros)
         {
-            SqlCommand comando = new SqlCommand();
             SqlConnection conexao = new SqlConnection(StringDeConexao);
-            comando.Connection = conexao;
-            comando.CommandType = CommandType.StoredProcedure;
-            comando.CommandText = nomeProcedure;
+            SqlCommand comando = new SqlCommand
+            {
+                Connection = conexao,
+                CommandType = CommandType.StoredProcedure,
+                CommandText = nomeProcedure
+            };
+
             foreach (var item in parametros)
                 comando.Parameters.Add(item);
 
@@ -43,12 +46,14 @@ namespace Imposto.Data
         /// <returns>Retorna um DataSet com o valor retornado</returns>
         internal DataSet Consultar(string nomeProcedure, List<SqlParameter> parametros)
         {
-            SqlCommand comando = new SqlCommand();
             SqlConnection conexao = new SqlConnection(StringDeConexao);
+            SqlCommand comando = new SqlCommand
+            {
+                Connection = conexao,
+                CommandType = CommandType.StoredProcedure,
+                CommandText = nomeProcedure
+            };
 
-            comando.Connection = conexao;
-            comando.CommandType = CommandType.StoredProcedure;
-            comando.CommandText = nomeProcedure;
             foreach (var item in parametros)
                 comando.Parameters.Add(item);
 
